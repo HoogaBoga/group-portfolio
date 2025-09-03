@@ -30,6 +30,28 @@ function About() {
           />
         </div>
       </div>
+
+      <div className="flex flex-col justify-center">
+        <p className="font-bold text-6xl mr-20 mb-6">About Us</p>
+        <p className="font-extralight text-gray-500 text-2xl mr-20 mb-6">
+          At{" "}
+          <span className="text-brand-green font-bold">
+            JSE Software Solutions
+          </span>
+          , we create smart, reliable, and scalable software tailored to help
+          businesses grow. Our focus is on building solutions that streamline
+          operations, boost productivity, and adapt to future needs.
+        </p>
+        <p className="font-extralight text-gray-500 text-2xl mr-20 mb-6">
+          We go <span className="text-brand-green font-bold">beyond</span>{" "}
+          coding—we deliver software that empowers businesses to succeed in the
+          digital age.
+        </p>
+
+        <button className="bg-brand-white text-brand-green w-35 h-12 rounded-xl border hover:bg-brand-green hover:text-brand-white hover:border-brand-green transition-all duration-200 cursor-pointer">
+          Learn More
+        </button>
+      </div>
     </section>
   )
 }
