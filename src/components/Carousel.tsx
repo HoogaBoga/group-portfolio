@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io"
 
-const images = ["/1.png", "/2.png", "/3.png"]
+const images = ["/1.png", "/8.png", "/6.png"]
 
 function Carousel() {
   const [current, setCurrent] = useState(0)
@@ -14,13 +14,13 @@ function Carousel() {
   }
 
   const prevSlide = () => {
-    setCurrent((prev) => (prev - 1 + images.length) % images.length)
+    setCurrent((prev) => (prev - 1 + images.length) % images.length) // fixed!
   }
 
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide()
-    }, 3000) // auto-slide every 3s
+    }, 3000)
 
     return () => clearInterval(interval)
   }, [])
@@ -30,13 +30,10 @@ function Carousel() {
       {/* Slides wrapper */}
       <div
         className="flex transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateX(-${current * 102}%)` }}
+        style={{ transform: `translateX(-${current * 100}%)` }}
       >
         {images.map((src, index) => (
-          <div
-            key={index}
-            className="w-[700px] h-[390px] relative flex-shrink-0"
-          >
+          <div key={index} className="w-full h-[390px] relative flex-shrink-0">
             <Image
               src={src}
               alt={`Slide ${index}`}
