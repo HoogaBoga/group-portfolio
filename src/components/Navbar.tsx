@@ -12,12 +12,18 @@ function Navbar() {
         alt="JSE Logo"
       ></Image>
 
-      <button className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer">
+      <a
+        href="#hero"
+        className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer"
+      >
         Home
-      </button>
-      <button className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer">
+      </a>
+      <a
+        href="#about"
+        className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer"
+      >
         About Us
-      </button>
+      </a>
       <button className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer">
         Projects
       </button>
