@@ -4,7 +4,7 @@ import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa"
 
 function Navbar() {
   return (
-    <nav className="bg-brand-black w-full pl-6 flex gap-8 items-center">
+    <nav className="bg-brand-black w-full pl-6 flex gap-8 items-center fixed z-40">
       <Image
         src="/JSE Logo_black 1.svg"
         width={120}

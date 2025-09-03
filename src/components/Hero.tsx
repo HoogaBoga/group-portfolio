@@ -3,7 +3,7 @@ import Carousel from "@/components/Carousel"
 
 function Hero() {
   return (
-    <section className="grid-cols-1 grid md:grid-cols-2 items-center min-h-[calc(100vh-6rem)] pl-12">
+    <section className="grid-cols-1 grid md:grid-cols-2 items-center min-h-[calc(100vh+4rem)] pl-12">
       <div className="flex flex-col justify-center">
         <p className="font-bold text-6xl mr-20 mb-6">
           Building Modern Solutions for Modern Problems
