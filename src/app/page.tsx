@@ -2,6 +2,7 @@ import Image from "next/image"
 import Hero from "@/components/Hero"
 import About from "@/components/About"
 import Staff from "@/components/Staff"
+import Contact from "@/components/Contact"
 
 export default function Home() {
   return (
@@ -17,6 +18,10 @@ export default function Home() {
 
         <section id="staff" className="w-full flex justify-center items-center">
           <Staff />
+        </section>
+
+        <section id="contact" className="w-full flex justify-center items-center">
+          <Contact />
         </section>
       </main>
     </div>
