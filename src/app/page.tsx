@@ -15,7 +15,7 @@ export default function Home() {
           <About />
         </section>
 
-        <section id="staff">
+        <section id="staff" className="w-full flex justify-center items-center">
           <Staff />
         </section>
       </main>
