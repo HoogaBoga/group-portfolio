@@ -26,7 +26,7 @@ function Carousel() {
   }, [])
 
   return (
-    <div className="relative w-[700px] h-[390px] overflow-hidden rounded-xl border-2 border-brand-green">
+    <div className="relative w-[700px] h-[390px] overflow-hidden rounded-xl border-r-6 border-b-6 border-brand-black">
       {/* Slides wrapper */}
       <div
         className="flex transition-transform duration-700 ease-in-out"
