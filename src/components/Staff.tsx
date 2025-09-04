@@ -92,7 +92,7 @@ function Staff() {
             name: "Borbajo, Princess Mikaela",
             role: "UI/UX Designer",
             description: "Create user-centered digital products by designing both the User Interface (UI), or the visual elements users interact with, and the overall User Experience (UX), or how easy and enjoyable it is to use the product.",
-            image: "/Judd.jpeg",
+            image: "/Princess.png",
             mainColor: "black",
             altColor: "white",
         },
@@ -100,8 +100,8 @@ function Staff() {
             name: "Estorba, Zoie Christie",
             role: "UI/UX Designer",
             description: "Create user-centered digital products by designing both the User Interface (UI), or the visual elements users interact with, and the overall User Experience (UX), or how easy and enjoyable it is to use the product.",
-            image: "/Judd.jpeg",
-            mainColor: "white",
+            image: "/Zoie.png",
+            mainColor: "gray",
             altColor: "brand-green",
         }
     ]
