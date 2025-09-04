@@ -1,16 +1,16 @@
-import React from 'react';
-import { MdOutlineEmail } from "react-icons/md";
-import { FaPhoneAlt } from "react-icons/fa";
-import ContactForm from './ContactForm';
+import React from "react"
+import { MdOutlineEmail } from "react-icons/md"
+import { FaPhoneAlt } from "react-icons/fa"
+import ContactForm from "./ContactForm"
 
 interface ContactInfoProps {
-  email?: string;
-  phone?: string;
+  email?: string
+  phone?: string
 }
 
-const ContactInfo: React.FC<ContactInfoProps> = ({ 
-  email = "spykegmail@gmail.com", 
-  phone = "+09spykenumber" 
+const ContactInfo: React.FC<ContactInfoProps> = ({
+  email = "spykegmail@gmail.com",
+  phone = "+09spykenumber",
 }) => {
   return (
     <div className="w-full max-w-md flex-shrink-0">
@@ -23,7 +23,9 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
           <MdOutlineEmail size={24} color="white" />
         </div>
         <div className="flex flex-col">
-          <span className="font-inter font-semibold text-lg text-gray-800">Email</span>
+          <span className="font-inter font-semibold text-lg text-gray-800">
+            Email
+          </span>
           <span className="font-inter text-gray-700 break-all">{email}</span>
         </div>
       </div>
@@ -33,26 +35,30 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
           <FaPhoneAlt size={24} color="white" />
         </div>
         <div className="flex flex-col">
-          <span className="font-inter font-semibold text-lg text-gray-800">Phone</span>
+          <span className="font-inter font-semibold text-lg text-gray-800">
+            Phone
+          </span>
           <span className="font-inter text-gray-700">{phone}</span>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const Contact: React.FC = () => {
   return (
     <section id="contact" className="w-full bg-brand-white">
-      <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-16">
-        <h1 className="font-inter font-bold text-[64px] underline text-brand-white text-center text-stroke-shadow">Get in touch</h1>
+      <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-16 ">
+        <h1 className="font-inter font-bold text-[64px] underline text-brand-white text-center text-stroke-shadow">
+          Get in touch
+        </h1>
         <div className="flex flex-row flex-nowrap gap-12 lg:gap-16 items-start mt-8">
           <ContactInfo />
           <ContactForm />
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Contact; 
+export default Contact

@@ -20,7 +20,10 @@ export default function Home() {
           <Staff />
         </section>
 
-        <section id="contact" className="w-full flex justify-center items-center">
+        <section
+          id="contact"
+          className="w-full flex justify-center items-center"
+        >
           <Contact />
         </section>
       </main>
