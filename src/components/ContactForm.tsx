@@ -26,12 +26,11 @@ export default function ContactForm(): JSX.Element {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
-    //do form submission either butang gforms or something
     console.log("Form submitted:", formData)
   }
 
   return (
-    <div className="inline-block w-auto max-w-none bg-white border border-black rounded-[20px] p-6">
+    <div className="w-full max-w-[1500px] bg-white border border-black rounded-[20px] p-6 border-b-6 border-r-6">
       <h2 className="font-inter font-bold text-[28px] md:text-[32px] leading-[1.2] text-black mb-6">
         Send us a message
       </h2>
@@ -43,7 +42,7 @@ export default function ContactForm(): JSX.Element {
           value={formData.name}
           onChange={handleChange}
           placeholder="name"
-          className="box-border w-fill h-[60px] bg-white border border-black rounded-[20px] px-[24px] py-[18px] font-inter font-thin text-[18px] md:text-[20px] leading-[24px] text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full h-[60px] bg-white border border-black rounded-[20px] px-[24px] py-[18px] font-inter font-thin text-[18px] md:text-[20px] leading-[24px] text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-green-500"
         />
 
         <input
@@ -52,7 +51,7 @@ export default function ContactForm(): JSX.Element {
           value={formData.email}
           onChange={handleChange}
           placeholder="email"
-          className="box-border w-fill h-[60px] bg-white border border-black rounded-[20px] px-[24px] py-[18px] font-inter font-thin text-[18px] md:text-[20px] leading-[24px] text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full h-[60px] bg-white border border-black rounded-[20px] px-[24px] py-[18px] font-inter font-thin text-[18px] md:text-[20px] leading-[24px] text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-green-500"
         />
 
         <textarea
@@ -60,8 +59,8 @@ export default function ContactForm(): JSX.Element {
           value={formData.message}
           onChange={handleChange}
           placeholder="message"
-          rows={8}
-          className="box-border w-fill md:w-[620px] lg:w-[800px] max-w-none bg-white border border-black rounded-[20px] px-[24px] py-[18px] font-inter font-thin text-[18px] md:text-[20px] leading-[24px] text-black placeholder-black resize-none focus:outline-none focus:ring-2 focus:ring-green-500"
+          rows={6}
+          className="w-full bg-white border border-black rounded-[20px] px-[24px] py-[18px] font-inter font-thin text-[18px] md:text-[20px] leading-[24px] text-black placeholder-black resize-none focus:outline-none focus:ring-2 focus:ring-green-500"
         />
 
         <button
