@@ -17,13 +17,11 @@
 }
 
 @layer utilities {
-  @layer utilities {
-    .text-stroke-shadow {
-      text-shadow:
+  .text-stroke-shadow {
+    text-shadow:
       /* black "stroke" around the text */ -1px -1px 0 #000,
-        1px -1px 0 #000, -1px 1px 0 #000, 3px 2px 0 #000,
-        /* green shadow behind */ 5px 5px 0 #16a34a;
-    }
+      1px -1px 0 #000, -1px 1px 0 #000, 3px 2px 0 #000,
+      /* green shadow behind */ 5px 5px 0 #16a34a;
   }
 }
 

@@ -24,18 +24,24 @@ function Navbar() {
       >
         About Us
       </a>
-      <button className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer">
+      <a
+        href="#projects"
+        className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer"
+      >
         Projects
-      </button>
+      </a>
       <a
         href="#staff"
         className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer"
       >
         Staff
       </a>
-      <button className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer">
+      <a
+        href="#contact"
+        className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer"
+      >
         Contact Us
-      </button>
+      </a>
 
       <div className="ml-auto pr-6 flex gap-4 cursor-pointer">
         <span className="text-white hover:text-[#1877f2] transition-colors duration-200">
