@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="w-full bg-brand-white">
       <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-16">
-        <h1 className="font-inter font-bold text-[64px] leading-[77px] underline text-black text-center">Get in touch</h1>
+        <h1 className="font-inter font-bold text-[64px] underline text-brand-white text-center text-stroke-shadow">Get in touch</h1>
         <div className="flex flex-row flex-nowrap gap-12 lg:gap-16 items-start mt-8">
           <ContactInfo />
           <ContactForm />
