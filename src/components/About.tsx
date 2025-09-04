@@ -32,7 +32,9 @@ function About() {
       </div>
 
       <div className="flex flex-col justify-center">
-        <p className="font-bold text-6xl mr-20 mb-6">About Us</p>
+        <p className="font-bold text-6xl text-brand-white text-stroke-shadow mr-20 mb-6">
+          About Us
+        </p>
         <p className="font-extralight text-gray-500 text-2xl mr-20 mb-6">
           At{" "}
           <span className="text-brand-green font-bold">

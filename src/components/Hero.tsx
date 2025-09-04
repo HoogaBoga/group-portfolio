@@ -25,7 +25,7 @@ function Hero() {
       </div>
 
       <div>
-        <div className="flex justify-center mr-10">
+        <div className="flex justify-center mr-10 shadow-2xl shadow-gray-500 rounded-xl border-b-6 border-r-6 border-brand-green">
           <Carousel />
         </div>
       </div>
