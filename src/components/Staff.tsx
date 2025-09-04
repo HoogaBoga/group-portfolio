@@ -44,7 +44,7 @@ function EmployeeCard({
     const borderClass = buttonBgClass;
 
     return (
-        <div className={`${bgClass} ${textClass} rounded-xl shadow-md p-8 w-96 max-w-full transition-all duration-300 hover:shadow-lg`}>
+        <div className={`${bgClass} ${textClass} rounded-xl shadow-md p-8 min-w-110 min-h-90 max-w-full transition-all duration-300 hover:shadow-lg`}>
             <div className={'flex justify-center mb-4'}>
                 <img src={image || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"} 
                      alt={name} 
@@ -87,17 +87,35 @@ function Staff() {
             image: "/Judd.jpeg",
             mainColor: "brand-green",
             altColor: "black",
+        },
+        {
+            name: "Borbajo, Princess Mikaela",
+            role: "UI/UX Designer",
+            description: "Create user-centered digital products by designing both the User Interface (UI), or the visual elements users interact with, and the overall User Experience (UX), or how easy and enjoyable it is to use the product.",
+            image: "/Judd.jpeg",
+            mainColor: "black",
+            altColor: "white",
+        },
+        {
+            name: "Estorba, Zoie Christie",
+            role: "UI/UX Designer",
+            description: "Create user-centered digital products by designing both the User Interface (UI), or the visual elements users interact with, and the overall User Experience (UX), or how easy and enjoyable it is to use the product.",
+            image: "/Judd.jpeg",
+            mainColor: "white",
+            altColor: "brand-green",
         }
     ]
     
     return (
         <section className="py-16 bg-white w-full flex flex-col items-center justify-center min-h-screen">
-            <h1 className="text-4xl md:text-5xl font-bold mb-12 underline">Meet the crew</h1>
+            <h1 className="font-inter font-bold text-[64px] underline text-brand-white text-center text-stroke-shadow mb-2">Meet the crew</h1>
 
-            <div className="flex flex-wrap justify-center gap-8">
-                {staffMembers.map((member) => (
-                    <EmployeeCard key={member.name} {...member}/>
-                ))}
+            <div className="w-full max-w-full overflow-x-auto overflow-y-hidden scroll-smooth scrollbar-hide">
+                <div className="flex flex-nowrap gap-8 px-4 snap-x snap-mandatory">
+                    {staffMembers.map((member) => (
+                        <EmployeeCard key={member.name} {...member}/>
+                    ))}
+                </div>
             </div>
         </section>
     );

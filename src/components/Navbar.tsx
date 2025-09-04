@@ -27,9 +27,12 @@ function Navbar() {
       <button className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer">
         Projects
       </button>
-      <button className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer">
+      <a
+        href="#staff"
+        className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer"
+      >
         Staff
-      </button>
+      </a>
       <button className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer">
         Contact Us
       </button>
