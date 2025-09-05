@@ -3,6 +3,7 @@ import Hero from "@/components/Hero"
 import About from "@/components/About"
 import Staff from "@/components/Staff"
 import Contact from "@/components/Contact"
+import Project from "@/components/Projects"
 
 export default function Home() {
   return (
@@ -14,6 +15,10 @@ export default function Home() {
 
         <section id="about">
           <About />
+        </section>
+
+        <section id="projects" className="w-full flex justify-center items-center p-6 max-h-full">
+            <Project />
         </section>
 
         <section id="staff" className="w-full flex justify-center items-center p-6">
