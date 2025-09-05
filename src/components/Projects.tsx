@@ -17,11 +17,7 @@ interface ProjectInfo {
 function ProjectCard({ title, description, image }: ProjectCardProps) {
     return (
         <div className="bg-black rounded-xl shadow-lg p-6 mb-4 min-h-[280px] border border-gray-200 hover:shadow-xl transition-shadow duration-300">
-            <div className="h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg mb-4 flex items-center justify-center">
-                <div className="text-white text-2xl font-bold">
-                    {title.split(' ')[0]}
-                </div>
-            </div>
+            <img src={image}/>
             <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
                 {title}
             </h3>
@@ -140,7 +136,7 @@ function Project() {
         {
             title: "Linya Pub - 2025",
             description: "Linya Publication is a student-run organization dedicated to delivering news and stories about iACADEMY's events and activities. Built with Laravel and powered by AWS (EC2, RDS, and S3), Linya provides students with a reliable and accessible platform for campus updates.",
-            image: "",
+            image: "/1.png",
         },
         {
             title: "Roam Rome - 2024",
