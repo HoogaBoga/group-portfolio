@@ -4,6 +4,7 @@ import About from "@/components/About"
 import Staff from "@/components/Staff"
 import Contact from "@/components/Contact"
 import Project from "@/components/Projects"
+import ScrollReveal from "@/components/ScrollReveal"
 
 export default function Home() {
   return (
@@ -14,7 +15,9 @@ export default function Home() {
         </section>
 
         <section id="about">
+          <ScrollReveal offset={200}>
           <About />
+          </ScrollReveal>
         </section>
 
         <section id="projects" className="w-full flex justify-center items-center p-6 max-h-full">
