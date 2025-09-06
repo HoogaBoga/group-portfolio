@@ -11,7 +11,9 @@ export default function Home() {
     <div className="bg-brand-white">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <section id="hero">
+          <ScrollReveal>
           <Hero />
+          </ScrollReveal>
         </section>
 
         <section id="about">
@@ -29,10 +31,13 @@ export default function Home() {
         </section>
 
         <section
+          
           id="contact"
           className="w-full flex justify-center items-center"
         >
+          <ScrollReveal offset={200}>
           <Contact />
+          </ScrollReveal>
         </section>
       </main>
     </div>
