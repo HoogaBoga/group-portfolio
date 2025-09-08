@@ -6,6 +6,7 @@ interface ProjectCardProps {
   title: string
   description: string
   image: string
+  isVisible: boolean
 }
 
 interface ProjectInfo {
@@ -14,10 +15,16 @@ interface ProjectInfo {
   image: string
 }
 
-function ProjectCard({ title, description, image }: ProjectCardProps) {
+function ProjectCard({ title, description, image, isVisible }: ProjectCardProps) {
   return (
-    <div className="bg-black rounded-xl shadow-lg p-6 mb-4 min-h-[280px] border border-gray-200 hover:shadow-xl transition-shadow duration-300">
-      <img src={image} />
+    <div className={`bg-black rounded-xl shadow-lg p-6 mb-4 min-h-[280px] border border-gray-200 hover:shadow-xl transition-all duration-700 ${
+      isVisible 
+        ? 'opacity-100 translate-x-0 scale-100' 
+        : 'opacity-0 translate-x-8 scale-95'
+    }`}>
+      <img src={image} className={`transition-all duration-500 ${
+        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+      }`} />
       <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
         {title}
       </h3>
@@ -33,6 +40,9 @@ interface CarouselColumnProps {
   direction: "up" | "down"
   speed?: number
   onHoverChange: (isHovered: boolean) => void
+  columnIndex: number
+  isVisible: boolean
+  hasBeenVisible: boolean
 }
 
 function CarouselColumn({
@@ -40,6 +50,9 @@ function CarouselColumn({
   direction,
   speed = 50,
   onHoverChange,
+  columnIndex,
+  isVisible,
+  hasBeenVisible,
 }: CarouselColumnProps) {
   const [translateY, setTranslateY] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
@@ -51,7 +64,7 @@ function CarouselColumn({
   const duplicatedItems = [...items, ...items]
 
   useEffect(() => {
-    if (isPaused || isManualScrolling) return
+    if (isPaused || isManualScrolling || !isVisible) return
 
     const interval = setInterval(() => {
       setTranslateY((prev) => {
@@ -70,7 +83,7 @@ function CarouselColumn({
     }, speed)
 
     return () => clearInterval(interval)
-  }, [isPaused, isManualScrolling, direction, speed])
+  }, [isPaused, isManualScrolling, direction, speed, isVisible])
 
   const handleMouseEnter = () => {
     setIsPaused(true)
@@ -105,7 +118,14 @@ function CarouselColumn({
   return (
     <div
       ref={containerRef}
-      className="h-full overflow-hidden relative cursor-pointer"
+      className={`h-full overflow-hidden relative cursor-pointer transition-all duration-1000 ${
+        isVisible 
+          ? 'opacity-100 translate-y-0 scale-100' 
+          : 'opacity-0 translate-y-12 scale-95'
+      }`}
+      style={{ 
+        transitionDelay: `${600 + columnIndex * 200}ms`
+      }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onWheel={handleScroll}
@@ -119,7 +139,11 @@ function CarouselColumn({
         }}
       >
         {duplicatedItems.map((project, index) => (
-          <ProjectCard key={`${project.title}-${index}`} {...project} />
+          <ProjectCard 
+            key={`${project.title}-${index}`} 
+            {...project} 
+            isVisible={isVisible && hasBeenVisible}
+          />
         ))}
       </div>
 
@@ -133,6 +157,9 @@ function CarouselColumn({
 function Project() {
   const [isCarouselHovered, setIsCarouselHovered] = useState(false)
   const [hoveredColumns, setHoveredColumns] = useState(new Set<number>())
+  const [isVisible, setIsVisible] = useState(false)
+  const [hasBeenVisible, setHasBeenVisible] = useState(false)
+  const sectionRef = useRef<HTMLDivElement>(null)
 
   const projectInfo: ProjectInfo[] = [
     {
@@ -182,6 +209,36 @@ function Project() {
   const column1 = projectInfo.filter((_, index) => index % 3 === 0)
   const column2 = projectInfo.filter((_, index) => index % 3 === 1)
   const column3 = projectInfo.filter((_, index) => index % 3 === 2)
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+            setHasBeenVisible(true)
+          } else {
+            setIsVisible(false)
+          }
+        });
+      },
+      {
+        threshold: 0.2, // Trigger when 20% of the section is visible
+        rootMargin: "-50px 0px -50px 0px" // Add some margin for better trigger timing
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const handleColumnHover = (columnIndex: number, isHovered: boolean) => {
     setHoveredColumns((prev) => {
@@ -246,20 +303,40 @@ function Project() {
   }, [hoveredColumns.size])
 
   return (
-    <div className="min-h-screen py-12 px-4">
+    <div 
+      ref={sectionRef}
+      className="min-h-screen py-12 px-4 transition-all duration-1000"
+    >
       <div className="max-w-7xl mx-auto w-full">
-        <div className="text-center mb-12">
+        <div 
+          className={`text-center mb-12 transition-all duration-1000 ${
+            isVisible 
+              ? 'opacity-100 translate-y-0 scale-100' 
+              : 'opacity-0 -translate-y-8 scale-95'
+          }`}
+          style={{ transitionDelay: '200ms' }}
+        >
           <h1 className="font-inter font-bold text-[64px] underline text-brand-white text-center text-stroke-shadow">
             Our Projects
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 h-[600px] w-full">
+        <div 
+          className={`grid grid-cols-1 md:grid-cols-3 gap-8 h-[600px] w-full transition-all duration-1000 ${
+            isVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}
+          style={{ transitionDelay: '400ms' }}
+        >
           <CarouselColumn
             items={column1}
             direction="up"
             speed={90}
             onHoverChange={(isHovered) => handleColumnHover(0, isHovered)}
+            columnIndex={0}
+            isVisible={isVisible}
+            hasBeenVisible={hasBeenVisible}
           />
 
           <CarouselColumn
@@ -267,6 +344,9 @@ function Project() {
             direction="down"
             speed={90}
             onHoverChange={(isHovered) => handleColumnHover(1, isHovered)}
+            columnIndex={1}
+            isVisible={isVisible}
+            hasBeenVisible={hasBeenVisible}
           />
 
           <CarouselColumn
@@ -274,6 +354,9 @@ function Project() {
             direction="up"
             speed={90}
             onHoverChange={(isHovered) => handleColumnHover(2, isHovered)}
+            columnIndex={2}
+            isVisible={isVisible}
+            hasBeenVisible={hasBeenVisible}
           />
         </div>
       </div>

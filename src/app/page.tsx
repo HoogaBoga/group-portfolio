@@ -9,30 +9,23 @@ import Footer from "@/components/Footer"
 
 export default function Home() {
   return (
-    <div className="bg-brand-white">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <div className="bg-brand-white overflow-x-hidden">
+      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start overflow-x-hidden">
         <section id="hero">
           <ScrollReveal>
           <Hero />
           </ScrollReveal>
         </section>
-
         <section id="about">
           <ScrollReveal offset={200}>
           <About />
           </ScrollReveal>
         </section>
-
         <section id="projects" className="w-full flex justify-center items-center p-6 max-h-full">
             <Project />
         </section>
-
-        <section id="staff" className="w-full flex justify-center items-center p-6">
-          <Staff />
-        </section>
-
+        <Staff />
         <section
-          
           id="contact"
           className="w-full flex justify-center items-center"
         >
@@ -40,7 +33,6 @@ export default function Home() {
           <Contact />
           </ScrollReveal>
         </section>
-      
       </main>
     </div>
   )
