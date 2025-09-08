@@ -5,6 +5,7 @@ import Staff from "@/components/Staff"
 import Contact from "@/components/Contact"
 import Project from "@/components/Projects"
 import ScrollReveal from "@/components/ScrollReveal"
+import Footer from "@/components/Footer"
 
 export default function Home() {
   return (
@@ -39,6 +40,7 @@ export default function Home() {
           <Contact />
           </ScrollReveal>
         </section>
+      
       </main>
     </div>
   )
