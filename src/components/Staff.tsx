@@ -87,11 +87,12 @@ function EmployeeCard({
         {description}
       </p>
       <div className="flex justify-center">
-        <button
+        <a
           className={`${buttonBgClass} ${buttonTextClass} py-2 px-4 rounded-md font-medium text-base transition-all duration-300 hover:scale-105 hover:shadow-lg`}
+          href="https://princess-mikaela-portfolio.vercel.app/"
         >
           Portfolio
-        </button>
+        </a>
       </div>
     </div>
   )
