@@ -187,7 +187,7 @@ function Project() {
     {
       title: "IDiscount - 2024",
       description:
-        "Task-Management-System is a web application built with Laravel, TailwindCSS, and Supabase. It is designed for managing your own tasks efficiently, providing a clean interface and robust backend for personal productivity.",
+        "Your go-to app for exclusive student & community discounts you’ll actually love",
       image: "/idiscount.jpg",
     },
     {
