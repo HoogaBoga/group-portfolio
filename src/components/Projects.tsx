@@ -182,7 +182,7 @@ function Project() {
       title: "Roam Rome - 2024",
       description:
         "A responsive travel website built using Tailwind CSS and TypeScript that showcases tourist attractions in Rome. The site features an elegant design with interactive elements, allowing users to explore famous landmarks, historical sites, and local experiences in the Eternal City.",
-      image: "",
+      image: "/RoamRome.png",
     },
     {
       title: "IDiscount - 2024",
@@ -197,16 +197,20 @@ function Project() {
       image: "/Zapac.png",
     },
     {
-      title: "MindSpace - 2023",
+      title: "Restaurant Management System - 2023",
       description:
-        "A mental wellness application that combines meditation, mood tracking, and community support. Developed using Flutter and Firebase, providing cross-platform accessibility for mental health resources.",
-      image: "",
+        "A comprehensive Restaurant Management System designed to streamline operations. This all-in-one platform handles orders, tables, and inventory, empowering staff and enhancing the customer experience.",
+      image: "RMS.jpeg",
     },
     {
-      title: "MindSpace - 2023",
-      description:
-        "A mental wellness application that combines meditation, mood tracking, and community support. Developed using Flutter and Firebase, providing cross-platform accessibility for mental health resources.",
-      image: "",
+      title: "SariSmart - 2025",
+      description: "An AI-powered inventory management system designed for sari-sari stores in the Philippines. It tracks sales, predicts stock needs, manages finances, and simplifies ordering, helping small businesses increase profitability and reduce waste.",
+      image: "SariSmart.jpeg",
+    },
+    {
+      title: "The Comeback - 2024",
+      description: "The Comeback is a rogue-like survival game where players must navigate a perilous, ever-changing world. Each run offers new challenges and opportunities to gather resources, craft tools, and overcome formidable enemies in a relentless fight to survive.",
+      image: "TheComeback.jpeg",
     },
     {
       title: "Lament of the Departed - 2024",
