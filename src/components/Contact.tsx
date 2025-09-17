@@ -9,8 +9,8 @@ interface ContactInfoProps {
 }
 
 const ContactInfo: React.FC<ContactInfoProps> = ({
-  email = "spykegmail@gmail.com",
-  phone = "+09spykenumber",
+  email = "matty.lim718@gmail.com",
+  phone = "+09177734483",
 }) => {
   return (
     <div className="flex-1 max-w-md">

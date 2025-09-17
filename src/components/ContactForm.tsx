@@ -13,6 +13,8 @@ export default function ContactForm(): JSX.Element {
     email: "",
     message: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -24,9 +26,27 @@ export default function ContactForm(): JSX.Element {
     }))
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      //mailto 
+      const subject = encodeURIComponent(`Message from ${formData.name}`)
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )
+      window.location.href = `mailto:matty.lim718@gmail.com?subject=${subject}&body=${body}`
+      
+      setSubmitStatus('success')
+      setFormData({ name: "", email: "", message: "" })
+    } catch (error) {
+      console.error('Error sending email:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -35,6 +55,18 @@ export default function ContactForm(): JSX.Element {
         Send us a message
       </h2>
 
+      {submitStatus === 'success' && (
+        <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+          Message sent successfully! We'll get back to you soon.
+        </div>
+      )}
+
+      {submitStatus === 'error' && (
+        <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+          There was an error sending your message. Please try again.
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         <input
           type="text"
@@ -42,6 +74,7 @@ export default function ContactForm(): JSX.Element {
           value={formData.name}
           onChange={handleChange}
           placeholder="name"
+          required
           className="w-full h-[60px] bg-white border border-black rounded-[20px] px-[24px] py-[18px] font-inter font-thin text-[18px] md:text-[20px] leading-[24px] text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-green-500"
         />
 
@@ -51,6 +84,7 @@ export default function ContactForm(): JSX.Element {
           value={formData.email}
           onChange={handleChange}
           placeholder="email"
+          required
           className="w-full h-[60px] bg-white border border-black rounded-[20px] px-[24px] py-[18px] font-inter font-thin text-[18px] md:text-[20px] leading-[24px] text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-green-500"
         />
 
@@ -60,15 +94,17 @@ export default function ContactForm(): JSX.Element {
           onChange={handleChange}
           placeholder="message"
           rows={6}
+          required
           className="w-full bg-white border border-black rounded-[20px] px-[24px] py-[18px] font-inter font-thin text-[18px] md:text-[20px] leading-[24px] text-black placeholder-black resize-none focus:outline-none focus:ring-2 focus:ring-green-500"
         />
 
         <button
           type="submit"
-          className="w-[187px] h-[60px] bg-green-600 hover:bg-green-700 transition-colors duration-200 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] rounded-[20px] flex flex-row justify-center items-center px-[24px] py-[32px] gap-[10px]"
+          disabled={isSubmitting}
+          className="w-[187px] h-[60px] bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] rounded-[20px] flex flex-row justify-center items-center px-[24px] py-[32px] gap-[10px]"
         >
           <span className="font-inter font-semibold text-[20px] md:text-[24px] leading-[29px] text-white">
-            Send
+            {isSubmitting ? 'Sending...' : 'Send'}
           </span>
         </button>
       </form>
