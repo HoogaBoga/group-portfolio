@@ -57,7 +57,7 @@ export default function ContactForm(): JSX.Element {
 
       {submitStatus === 'success' && (
         <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-          Message sent successfully! We'll get back to you soon.
+          Message sent successfully! We&rsquo;ll get back to you soon.
         </div>
       )}
 
