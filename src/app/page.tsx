@@ -13,24 +13,28 @@ export default function Home() {
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start overflow-x-hidden">
         <section id="hero">
           <ScrollReveal>
-          <Hero />
+            <Hero />
           </ScrollReveal>
+        </section>
+        <section
+          id="projects"
+          className="w-full flex justify-center items-center p-6 max-h-full"
+        >
+          <Project />
         </section>
         <section id="about">
           <ScrollReveal offset={200}>
-          <About />
+            <About />
           </ScrollReveal>
         </section>
-        <section id="projects" className="w-full flex justify-center items-center p-6 max-h-full">
-            <Project />
-        </section>
+
         <Staff />
         <section
           id="contact"
           className="w-full flex justify-center items-center"
         >
           <ScrollReveal offset={200}>
-          <Contact />
+            <Contact />
           </ScrollReveal>
         </section>
       </main>

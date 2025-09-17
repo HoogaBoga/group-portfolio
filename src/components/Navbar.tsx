@@ -19,41 +19,30 @@ function Navbar() {
         Home
       </a>
       <a
-        href="#about"
-        className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer"
-      >
-        About Us
-      </a>
-      <a
         href="#projects"
         className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer"
       >
         Projects
       </a>
       <a
-        href="#staff"
+        href="#partners"
         className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer"
       >
-        Staff
+        Partners
       </a>
+      <a
+        href="#about"
+        className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer"
+      >
+        About Us
+      </a>
+
       <a
         href="#contact"
         className="text-brand-white hover:text-brand-green transition-colors duration-200 cursor-pointer"
       >
         Contact Us
       </a>
-
-      <div className="ml-auto pr-6 flex gap-4 cursor-pointer">
-        <span className="text-white hover:text-[#1877f2] transition-colors duration-200">
-          <FaFacebook size={32} color="currentColor" />
-        </span>
-        <span className="text-white hover:text-[#E1306C] transition-colors duration-200">
-          <FaInstagram size={32} color="currentColor" />
-        </span>
-        <span className="text-white hover:text-[#0A66C2] transition-colors duration-200">
-          <FaLinkedin size={32} color="currentColor" />
-        </span>
-      </div>
     </nav>
   )
 }
