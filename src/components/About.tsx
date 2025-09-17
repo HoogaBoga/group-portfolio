@@ -3,28 +3,12 @@ import Image from "next/image"
 
 function About() {
   return (
-    <section className="grid-cols-1 grid md:grid-cols-2 items-center min-h-screen pl-12">
-      <div className="grid grid-cols-3 gap-4 w-full mt-20">
-        <div className="relative h-[600px] w-[200px]">
+    <section className="grid grid-cols-1 md:grid-cols-2 items-center min-h-screen pl-12 gap-12">
+      <div className="gap-4 w-full mt-20 mr-30">
+        <div className="relative h-[600px]">
           <Image
-            src="/Edwell.jpeg"
+            src="/group.jpg"
             alt="Edwell"
-            fill
-            className="object-cover rounded-xl"
-          />
-        </div>
-        <div className="relative h-[600px] w-[200px]">
-          <Image
-            src="/Spyke.jpeg"
-            alt="Spyke"
-            fill
-            className="object-cover rounded-xl"
-          />
-        </div>
-        <div className="relative h-[600px] w-[200px]">
-          <Image
-            src="/Judd.jpeg"
-            alt="Judd"
             fill
             className="object-cover rounded-xl"
           />

@@ -15,16 +15,26 @@ interface ProjectInfo {
   image: string
 }
 
-function ProjectCard({ title, description, image, isVisible }: ProjectCardProps) {
+function ProjectCard({
+  title,
+  description,
+  image,
+  isVisible,
+}: ProjectCardProps) {
   return (
-    <div className={`bg-black rounded-xl shadow-lg p-6 mb-4 min-h-[280px] border border-gray-200 hover:shadow-xl transition-all duration-700 ${
-      isVisible 
-        ? 'opacity-100 translate-x-0 scale-100' 
-        : 'opacity-0 translate-x-8 scale-95'
-    }`}>
-      <img src={image} className={`transition-all duration-500 ${
-        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-      }`} />
+    <div
+      className={`bg-black rounded-xl shadow-lg p-6 mb-4 min-h-[280px] border border-gray-200 hover:shadow-xl transition-all duration-700 ${
+        isVisible
+          ? "opacity-100 translate-x-0 scale-100"
+          : "opacity-0 translate-x-8 scale-95"
+      }`}
+    >
+      <img
+        src={image}
+        className={`transition-all duration-500 ${
+          isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
+        }`}
+      />
       <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
         {title}
       </h3>
@@ -119,12 +129,12 @@ function CarouselColumn({
     <div
       ref={containerRef}
       className={`h-full overflow-hidden relative cursor-pointer transition-all duration-1000 ${
-        isVisible 
-          ? 'opacity-100 translate-y-0 scale-100' 
-          : 'opacity-0 translate-y-12 scale-95'
+        isVisible
+          ? "opacity-100 translate-y-0 scale-100"
+          : "opacity-0 translate-y-12 scale-95"
       }`}
-      style={{ 
-        transitionDelay: `${600 + columnIndex * 200}ms`
+      style={{
+        transitionDelay: `${600 + columnIndex * 200}ms`,
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -139,9 +149,9 @@ function CarouselColumn({
         }}
       >
         {duplicatedItems.map((project, index) => (
-          <ProjectCard 
-            key={`${project.title}-${index}`} 
-            {...project} 
+          <ProjectCard
+            key={`${project.title}-${index}`}
+            {...project}
             isVisible={isVisible && hasBeenVisible}
           />
         ))}
@@ -221,24 +231,24 @@ function Project() {
           } else {
             setIsVisible(false)
           }
-        });
+        })
       },
       {
         threshold: 0.2, // Trigger when 20% of the section is visible
-        rootMargin: "-50px 0px -50px 0px" // Add some margin for better trigger timing
+        rootMargin: "-50px 0px -50px 0px", // Add some margin for better trigger timing
       }
-    );
+    )
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+      observer.observe(sectionRef.current)
     }
 
     return () => {
       if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+        observer.unobserve(sectionRef.current)
       }
-    };
-  }, []);
+    }
+  }, [])
 
   const handleColumnHover = (columnIndex: number, isHovered: boolean) => {
     setHoveredColumns((prev) => {
@@ -303,31 +313,29 @@ function Project() {
   }, [hoveredColumns.size])
 
   return (
-    <div 
+    <div
       ref={sectionRef}
-      className="min-h-screen py-12 px-4 transition-all duration-1000"
+      className="min-h-[calc(100vh+4rem)] py-12 px-4 transition-all duration-1000 mt-5"
     >
       <div className="max-w-7xl mx-auto w-full">
-        <div 
+        <div
           className={`text-center mb-12 transition-all duration-1000 ${
-            isVisible 
-              ? 'opacity-100 translate-y-0 scale-100' 
-              : 'opacity-0 -translate-y-8 scale-95'
+            isVisible
+              ? "opacity-100 translate-y-0 scale-100"
+              : "opacity-0 -translate-y-8 scale-95"
           }`}
-          style={{ transitionDelay: '200ms' }}
+          style={{ transitionDelay: "200ms" }}
         >
           <h1 className="font-inter font-bold text-[64px] underline text-brand-white text-center text-stroke-shadow">
             Our Projects
           </h1>
         </div>
 
-        <div 
+        <div
           className={`grid grid-cols-1 md:grid-cols-3 gap-8 h-[600px] w-full transition-all duration-1000 ${
-            isVisible 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 translate-y-8'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
-          style={{ transitionDelay: '400ms' }}
+          style={{ transitionDelay: "400ms" }}
         >
           <CarouselColumn
             items={column1}
