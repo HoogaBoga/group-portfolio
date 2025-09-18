@@ -81,7 +81,7 @@ export default function ContactForm(): JSX.Element {
   }
 
   return (
-    <div className="w-full max-w-[1500px] bg-white border border-black rounded-[20px] p-6 border-b-6 border-r-6">
+    <div className="w-full  bg-white border border-black rounded-[20px] p-6 border-b-6 border-r-6">
       <h2 className="font-inter font-bold text-[28px] md:text-[32px] leading-[1.2] text-black mb-6">
         Send us a message
       </h2>

@@ -13,7 +13,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
   phone = "+09177734483",
 }) => {
   return (
-    <div className="flex-1 max-w-md">
+    <div className="flex flex-col justify-center">
       <h2 className="w-full font-inter whitespace-nowrap font-bold text-[28px] md:text-[32px] leading-[1.2] text-black">
         Contact Information
       </h2>
@@ -51,13 +51,21 @@ const Contact: React.FC = () => {
       id="contact"
       className="w-full bg-brand-white min-h-[calc(100vh+4rem)] mt-20"
     >
-      <div className="max-w-3xl md:max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-10">
+      <div className="max-w-[1400px] mx-auto px-6 py-16">
         <h1 className="font-inter font-bold text-[48px] md:text-[64px] underline text-brand-white text-center text-stroke-shadow">
           Get in touch
         </h1>
+
+        {/* Layout Grid */}
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start mt-8">
-          <ContactInfo />
-          <ContactForm />
+          <div className="flex-1">
+            <ContactInfo />
+          </div>
+          <div className="flex-[2]">
+            {" "}
+            {/* Form takes 2x the space of ContactInfo */}
+            <ContactForm />
+          </div>
         </div>
       </div>
     </section>

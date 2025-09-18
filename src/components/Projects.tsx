@@ -2,19 +2,18 @@
 
 import React, { useState, useEffect, useRef } from "react"
 
-interface ProjectCardProps {
-  title: string
-  description: string
-  image: string
-  isVisible: boolean
-}
-
+// --- Types ---
 interface ProjectInfo {
   title: string
   description: string
   image: string
 }
 
+interface ProjectCardProps extends ProjectInfo {
+  isVisible: boolean
+}
+
+// --- Project Card ---
 function ProjectCard({
   title,
   description,
@@ -31,7 +30,8 @@ function ProjectCard({
     >
       <img
         src={image}
-        className={`transition-all duration-500 ${
+        alt={title}
+        className={`transition-all duration-500 mb-4 rounded-lg ${
           isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
         }`}
       />
@@ -45,16 +45,7 @@ function ProjectCard({
   )
 }
 
-interface CarouselColumnProps {
-  items: ProjectInfo[]
-  direction: "up" | "down"
-  speed?: number
-  onHoverChange: (isHovered: boolean) => void
-  columnIndex: number
-  isVisible: boolean
-  hasBeenVisible: boolean
-}
-
+// --- Carousel Column ---
 function CarouselColumn({
   items,
   direction,
@@ -63,14 +54,21 @@ function CarouselColumn({
   columnIndex,
   isVisible,
   hasBeenVisible,
-}: CarouselColumnProps) {
+}: {
+  items: ProjectInfo[]
+  direction: "up" | "down"
+  speed?: number
+  onHoverChange: (isHovered: boolean) => void
+  columnIndex: number
+  isVisible: boolean
+  hasBeenVisible: boolean
+}) {
   const [translateY, setTranslateY] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isManualScrolling, setIsManualScrolling] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
 
-  // Duplicate items for seamless scrolling
   const duplicatedItems = [...items, ...items]
 
   useEffect(() => {
@@ -79,9 +77,7 @@ function CarouselColumn({
     const interval = setInterval(() => {
       setTranslateY((prev) => {
         const contentHeight = contentRef.current?.scrollHeight || 0
-        const containerHeight = containerRef.current?.clientHeight || 0
-        const itemHeight = contentHeight / 2 // Since we duplicated items
-
+        const itemHeight = contentHeight / 2
         if (direction === "up") {
           const newValue = prev - 1
           return newValue <= -itemHeight ? 0 : newValue
@@ -99,16 +95,13 @@ function CarouselColumn({
     setIsPaused(true)
     onHoverChange(true)
   }
-
   const handleMouseLeave = () => {
     setIsPaused(false)
     onHoverChange(false)
     setTimeout(() => setIsManualScrolling(false), 100)
   }
-
   const handleScroll = (e: React.WheelEvent) => {
     if (!isPaused) return
-
     e.preventDefault()
     e.stopPropagation()
     setIsManualScrolling(true)
@@ -133,9 +126,7 @@ function CarouselColumn({
           ? "opacity-100 translate-y-0 scale-100"
           : "opacity-0 translate-y-12 scale-95"
       }`}
-      style={{
-        transitionDelay: `${600 + columnIndex * 200}ms`,
-      }}
+      style={{ transitionDelay: `${600 + columnIndex * 200}ms` }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onWheel={handleScroll}
@@ -157,16 +148,14 @@ function CarouselColumn({
         ))}
       </div>
 
-      {/* Gradient overlays for seamless effect */}
-      <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-gray-50 to-transparent pointer-events-none z-10" />
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50 to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-black to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black to-transparent pointer-events-none z-10" />
     </div>
   )
 }
 
+// --- Main Component ---
 function Project() {
-  const [isCarouselHovered, setIsCarouselHovered] = useState(false)
-  const [hoveredColumns, setHoveredColumns] = useState(new Set<number>())
   const [isVisible, setIsVisible] = useState(false)
   const [hasBeenVisible, setHasBeenVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -175,56 +164,59 @@ function Project() {
     {
       title: "Linya Pub - 2025",
       description:
-        "Linya Publication is a student-run organization dedicated to delivering news and stories about iACADEMY's events and activities. Built with Laravel and powered by AWS (EC2, RDS, and S3), Linya provides students with a reliable and accessible platform for campus updates.",
+        "Linya Publication is a student-run organization dedicated to delivering news and stories about iACADEMY's events and activities. Built with Laravel and powered by AWS (EC2, RDS, and S3).",
       image: "/1.png",
     },
     {
       title: "Roam Rome - 2024",
       description:
-        "A responsive travel website built using Tailwind CSS and TypeScript that showcases tourist attractions in Rome. The site features an elegant design with interactive elements, allowing users to explore famous landmarks, historical sites, and local experiences in the Eternal City.",
+        "A responsive travel website built using Tailwind CSS and TypeScript that showcases tourist attractions in Rome.",
       image: "/RoamRome.png",
     },
     {
       title: "IDiscount - 2024",
       description:
-        "Your go-to app for exclusive student & community discounts you’ll actually love",
+        "Your go-to app for exclusive student & community discounts you’ll actually love.",
       image: "/idiscount.jpg",
     },
     {
       title: "Zapac - 2025",
       description:
-        "ZAPAC is a real-time commuter tracking app designed to make commuting around Cebu faster, safer, and more convenient. It helps users view nearby jeepney and bus routes, track vehicle locations, and save favorites — all in one seamless mobile experience.",
+        "ZAPAC is a real-time commuter tracking app designed to make commuting around Cebu faster, safer, and more convenient.",
       image: "/Zapac.png",
     },
     {
       title: "Restaurant Management System - 2023",
       description:
-        "A comprehensive Restaurant Management System designed to streamline operations. This all-in-one platform handles orders, tables, and inventory, empowering staff and enhancing the customer experience.",
+        "A comprehensive Restaurant Management System designed to streamline operations.",
       image: "RMS.jpeg",
     },
     {
       title: "SariSmart - 2025",
-      description: "An AI-powered inventory management system designed for sari-sari stores in the Philippines. It tracks sales, predicts stock needs, manages finances, and simplifies ordering, helping small businesses increase profitability and reduce waste.",
+      description:
+        "An AI-powered inventory management system for sari-sari stores in the Philippines.",
       image: "SariSmart.jpeg",
     },
     {
       title: "The Comeback - 2024",
-      description: "The Comeback is a rogue-like survival game where players must navigate a perilous, ever-changing world. Each run offers new challenges and opportunities to gather resources, craft tools, and overcome formidable enemies in a relentless fight to survive.",
+      description:
+        "A rogue-like survival game where players navigate a perilous, ever-changing world.",
       image: "TheComeback.jpeg",
     },
     {
       title: "Lament of the Departed - 2024",
       description:
-        "Lament of the Departed follows the mysterious journey of a lone character navigating a broken world filled with haunting echoes of the past. Through pixel-crafted maps and emotionally-driven dialogues, players uncover a tale of loss, memory, and choice.",
+        "Pixel-crafted maps and emotionally-driven dialogues uncover a tale of loss, memory, and choice.",
       image: "princess_game.png",
     },
   ]
 
-  const column1 = projectInfo.filter((_, index) => index % 3 === 0)
-  const column2 = projectInfo.filter((_, index) => index % 3 === 1)
-  const column3 = projectInfo.filter((_, index) => index % 3 === 2)
+  // Split into carousel columns
+  const col1 = projectInfo.filter((_, index) => index % 3 === 0)
+  const col2 = projectInfo.filter((_, index) => index % 3 === 1)
+  const col3 = projectInfo.filter((_, index) => index % 3 === 2)
 
-  // Intersection Observer for scroll animations
+  // Intersection Observer for animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -237,135 +229,84 @@ function Project() {
           }
         })
       },
-      {
-        threshold: 0.2, // Trigger when 20% of the section is visible
-        rootMargin: "-50px 0px -50px 0px", // Add some margin for better trigger timing
-      }
+      { threshold: 0.2 }
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current)
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
+      if (sectionRef.current) observer.unobserve(sectionRef.current)
     }
   }, [])
 
-  const handleColumnHover = (columnIndex: number, isHovered: boolean) => {
-    setHoveredColumns((prev) => {
-      const newSet = new Set(prev)
-      if (isHovered) {
-        newSet.add(columnIndex)
-      } else {
-        newSet.delete(columnIndex)
-      }
-      return newSet
-    })
-
-    setIsCarouselHovered(isHovered || hoveredColumns.size > 0)
-  }
-
-  // Lock/unlock body scroll based on carousel hover state
-  useEffect(() => {
-    const body = document.body
-    const shouldLock = hoveredColumns.size > 0
-
-    if (shouldLock) {
-      // Only lock if not already locked
-      if (!body.hasAttribute("data-scroll-locked")) {
-        // Calculate scrollbar width to prevent layout shift
-        const scrollbarWidth =
-          window.innerWidth - document.documentElement.clientWidth
-
-        // Store the current scroll position before locking
-        const scrollY = window.scrollY
-
-        // Apply lock styles using overflow hidden instead of position fixed
-        body.style.overflow = "hidden"
-        body.style.paddingRight = `${scrollbarWidth}px`
-        body.style.height = "100vh"
-
-        // Mark as locked and store scroll position
-        body.setAttribute("data-scroll-locked", "true")
-        body.setAttribute("data-scroll-y", scrollY.toString())
-      }
-    } else {
-      // Only unlock if currently locked
-      if (body.hasAttribute("data-scroll-locked")) {
-        // Clear all lock styles
-        body.style.overflow = ""
-        body.style.paddingRight = ""
-        body.style.height = ""
-        body.removeAttribute("data-scroll-locked")
-        body.removeAttribute("data-scroll-y")
-      }
-    }
-
-    return () => {
-      // Cleanup on unmount - only if locked
-      if (body.hasAttribute("data-scroll-locked")) {
-        body.style.overflow = ""
-        body.style.paddingRight = ""
-        body.style.height = ""
-        body.removeAttribute("data-scroll-locked")
-        body.removeAttribute("data-scroll-y")
-      }
-    }
-  }, [hoveredColumns.size])
+  const featuredProject = projectInfo[0] // Zapac featured
 
   return (
-    <div
-      ref={sectionRef}
-      className="min-h-[calc(100vh+4rem)] py-12 px-4 transition-all duration-1000 mt-5"
-    >
+    <div ref={sectionRef} className="min-h-[100vh] py-12 px-4">
       <div className="max-w-7xl mx-auto w-full">
+        {/* Title */}
         <div
           className={`text-center mb-12 transition-all duration-1000 ${
             isVisible
               ? "opacity-100 translate-y-0 scale-100"
               : "opacity-0 -translate-y-8 scale-95"
           }`}
-          style={{ transitionDelay: "200ms" }}
         >
-          <h1 className="font-inter font-bold text-[64px] underline text-brand-white text-center text-stroke-shadow">
+          <h1 className="font-inter text-center text-[48px] md:text-[64px] font-bold text-white text-stroke-shadow mt-10">
             Our Projects
           </h1>
         </div>
 
+        {/* Featured Project */}
+        <div className="relative rounded-2xl overflow-hidden mb-16 shadow-lg">
+          <img
+            src={featuredProject.image}
+            alt={featuredProject.title}
+            className="w-full h-96 object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60 flex items-end p-8">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                {featuredProject.title}
+              </h2>
+              <p className="text-gray-200 max-w-2xl mb-4">
+                {featuredProject.description}
+              </p>
+              <button className="px-5 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg">
+                Learn more
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Carousels */}
         <div
           className={`grid grid-cols-1 md:grid-cols-3 gap-8 h-[600px] w-full transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
-          style={{ transitionDelay: "400ms" }}
         >
           <CarouselColumn
-            items={column1}
+            items={col1}
             direction="up"
             speed={90}
-            onHoverChange={(isHovered) => handleColumnHover(0, isHovered)}
+            onHoverChange={() => {}}
             columnIndex={0}
             isVisible={isVisible}
             hasBeenVisible={hasBeenVisible}
           />
-
           <CarouselColumn
-            items={column2}
+            items={col2}
             direction="down"
             speed={90}
-            onHoverChange={(isHovered) => handleColumnHover(1, isHovered)}
+            onHoverChange={() => {}}
             columnIndex={1}
             isVisible={isVisible}
             hasBeenVisible={hasBeenVisible}
           />
-
           <CarouselColumn
-            items={column3}
+            items={col3}
             direction="up"
             speed={90}
-            onHoverChange={(isHovered) => handleColumnHover(2, isHovered)}
+            onHoverChange={() => {}}
             columnIndex={2}
             isVisible={isVisible}
             hasBeenVisible={hasBeenVisible}

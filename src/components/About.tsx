@@ -7,7 +7,7 @@ function About() {
       <div className="gap-4 w-full mt-20 mr-30">
         <div className="relative h-[600px]">
           <Image
-            src="/group.jpg"
+            src="/jseteam.JPG"
             alt="Edwell"
             fill
             className="object-cover rounded-xl"
