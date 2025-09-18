@@ -6,6 +6,8 @@ import Contact from "@/components/Contact"
 import Project from "@/components/Projects"
 import ScrollReveal from "@/components/ScrollReveal"
 import Footer from "@/components/Footer"
+import Partners from "@/components/Partners"
+
 
 export default function Home() {
   return (
@@ -22,6 +24,9 @@ export default function Home() {
         >
           <Project />
         </section>
+        
+        <Partners title="Our Partners"/>
+
         <section id="about">
           <ScrollReveal offset={200}>
             <About />

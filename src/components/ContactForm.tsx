@@ -15,6 +15,7 @@ export default function ContactForm(): JSX.Element {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [debugMessage, setDebugMessage] = useState<string>("")
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -30,19 +31,29 @@ export default function ContactForm(): JSX.Element {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
+    setDebugMessage("")
 
     try {
-      //mailto 
-      const subject = encodeURIComponent(`Message from ${formData.name}`)
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )
-      window.location.href = `mailto:matty.lim718@gmail.com?subject=${subject}&body=${body}`
-      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      const text = await response.text().catch(() => '')
+      let parsed: any = null
+      try { parsed = text ? JSON.parse(text) : null } catch {}
+
+      if (!response.ok || (parsed && parsed.ok === false)) {
+        const message = parsed?.error || text || `Request failed with ${response.status}`
+        throw new Error(message)
+      }
+
       setSubmitStatus('success')
       setFormData({ name: "", email: "", message: "" })
-    } catch (error) {
-      console.error('Error sending email:', error)
+    } catch (error: any) {
+      console.error('Error submitting to Google Sheets:', error)
+      setDebugMessage(String(error?.message || error))
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -64,6 +75,9 @@ export default function ContactForm(): JSX.Element {
       {submitStatus === 'error' && (
         <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
           There was an error sending your message. Please try again.
+          {debugMessage && (
+            <div className="mt-2 text-xs text-red-600 break-words">{debugMessage}</div>
+          )}
         </div>
       )}
 
