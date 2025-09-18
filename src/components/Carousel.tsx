@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io"
 
-const images = ["/1.png", "/8.png", "/6.png"]
+const images = ["/1.png"]
 
 function Carousel() {
   const [current, setCurrent] = useState(0)
