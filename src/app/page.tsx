@@ -24,9 +24,7 @@ export default function Home() {
           <Project />
         </section>
 
-        <section className="w-full flex justify-center items-center p-6 max-h-full">
-          <Partners title="Our Partners" />
-        </section>
+        <Partners title="Our Partners" />
 
         <section id="about">
           <ScrollReveal offset={200}>
