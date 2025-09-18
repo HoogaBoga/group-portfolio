@@ -14,7 +14,9 @@ export default function ContactForm(): JSX.Element {
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle")
   const [debugMessage, setDebugMessage] = useState<string>("")
 
   const handleChange = (
@@ -30,31 +32,40 @@ export default function ContactForm(): JSX.Element {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()
     setIsSubmitting(true)
-    setSubmitStatus('idle')
+    setSubmitStatus("idle")
     setDebugMessage("")
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       })
 
-      const text = await response.text().catch(() => '')
+      const text = await response.text().catch(() => "")
       let parsed: any = null
-      try { parsed = text ? JSON.parse(text) : null } catch {}
+      try {
+        parsed = text ? JSON.parse(text) : null
+      } catch {}
 
       if (!response.ok || (parsed && parsed.ok === false)) {
-        const message = parsed?.error || text || `Request failed with ${response.status}`
+        const message =
+          parsed?.error || text || `Request failed with ${response.status}`
         throw new Error(message)
       }
 
-      setSubmitStatus('success')
+      setSubmitStatus("success")
       setFormData({ name: "", email: "", message: "" })
-    } catch (error: any) {
-      console.error('Error submitting to Google Sheets:', error)
-      setDebugMessage(String(error?.message || error))
-      setSubmitStatus('error')
+    } catch (error: unknown) {
+      console.error("Error submitting to Google Sheets:", error)
+
+      if (error instanceof Error) {
+        setDebugMessage(error.message)
+      } else {
+        setDebugMessage(String(error))
+      }
+
+      setSubmitStatus("error")
     } finally {
       setIsSubmitting(false)
     }
@@ -66,17 +77,19 @@ export default function ContactForm(): JSX.Element {
         Send us a message
       </h2>
 
-      {submitStatus === 'success' && (
+      {submitStatus === "success" && (
         <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
           Message sent successfully! We&rsquo;ll get back to you soon.
         </div>
       )}
 
-      {submitStatus === 'error' && (
+      {submitStatus === "error" && (
         <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
           There was an error sending your message. Please try again.
           {debugMessage && (
-            <div className="mt-2 text-xs text-red-600 break-words">{debugMessage}</div>
+            <div className="mt-2 text-xs text-red-600 break-words">
+              {debugMessage}
+            </div>
           )}
         </div>
       )}
@@ -118,7 +131,7 @@ export default function ContactForm(): JSX.Element {
           className="w-[187px] h-[60px] bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] rounded-[20px] flex flex-row justify-center items-center px-[24px] py-[32px] gap-[10px]"
         >
           <span className="font-inter font-semibold text-[20px] md:text-[24px] leading-[29px] text-white">
-            {isSubmitting ? 'Sending...' : 'Send'}
+            {isSubmitting ? "Sending..." : "Send"}
           </span>
         </button>
       </form>
