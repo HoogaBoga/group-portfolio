@@ -4,7 +4,7 @@ import BlurText from "@/components/BlurText"
 
 function Hero() {
   return (
-    <div className="relative min-h-[calc(100vh)]">
+    <div className="relative min-h-[calc(100vh+4rem)]">
       <section className="grid-cols-1 grid md:grid-cols-2 items-center min-h-[calc(100vh+4rem)] pl-12 relative z-10">
         <div className="flex flex-col justify-center">
           <div className="font-bold text-6xl mr-20 mb-6">
@@ -65,7 +65,7 @@ function Hero() {
           </div>
         </div>
         <div>
-          <div className="flex justify-center mr-10 shadow-2xl shadow-gray-500 rounded-xl border-b-6 border-r-6 border-brand-green">
+          <div className="flex justify-center mr-10 relative">
             <Carousel />
           </div>
         </div>
