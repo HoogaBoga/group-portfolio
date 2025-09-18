@@ -17,7 +17,6 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
       <h2 className="w-full font-inter whitespace-nowrap font-bold text-[28px] md:text-[32px] leading-[1.2] text-black">
         Contact Information
       </h2>
-
       <div className="mt-8 flex items-center gap-4">
         <div className="w-12 h-12 bg-red-500 rounded-[20px] flex items-center justify-center shadow-md">
           <MdOutlineEmail size={24} color="white" />
@@ -29,7 +28,6 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
           <span className="font-inter text-gray-700 break-all">{email}</span>
         </div>
       </div>
-
       <div className="mt-8 flex items-center gap-4">
         <div className="w-12 h-12 bg-blue-500 rounded-[20px] flex items-center justify-center shadow-md">
           <FaPhoneAlt size={24} color="white" />
@@ -51,19 +49,16 @@ const Contact: React.FC = () => {
       id="contact"
       className="w-full bg-brand-white min-h-[calc(100vh+4rem)] mt-20"
     >
-      <div className="max-w-[1400px] mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-6 py-16">
         <h1 className="font-inter font-bold text-[48px] md:text-[64px] underline text-brand-white text-center text-stroke-shadow">
           Get in touch
         </h1>
-
         {/* Layout Grid */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start mt-8">
-          <div className="flex-1">
+        <div className="grid grid-cols-1 lg:grid-cols-7 gap-12 lg:gap-16 items-start mt-8">
+          <div className="lg:col-span-2 w-full">
             <ContactInfo />
           </div>
-          <div className="flex-[2]">
-            {" "}
-            {/* Form takes 2x the space of ContactInfo */}
+          <div className="lg:col-span-5 w-full">
             <ContactForm />
           </div>
         </div>

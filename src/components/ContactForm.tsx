@@ -137,7 +137,7 @@ export default function ContactForm(): JSX.Element {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-[187px] h-[60px] bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] rounded-[20px] flex flex-row justify-center items-center px-[24px] py-[32px] gap-[10px]"
+          className="w-full h-[60px] bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] rounded-[20px] flex flex-row justify-center items-center px-[24px] py-[32px] gap-[10px]"
         >
           <span className="font-inter font-semibold text-[20px] md:text-[24px] leading-[29px] text-white">
             {isSubmitting ? "Sending..." : "Send"}

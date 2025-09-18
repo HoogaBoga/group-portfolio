@@ -18,29 +18,16 @@ export default function Footer() {
             Home
           </a>
           <a href="#about" className="hover:text-white transition">
-            About Us
-          </a>
-          <a href="#projects" className="hover:text-white transition">
             Projects
           </a>
+          <a href="#projects" className="hover:text-white transition">
+            Partners
+          </a>
           <a href="#staff" className="hover:text-white transition">
-            Staff
+            About Us
           </a>
           <a href="#contact" className="hover:text-white transition">
-            Contact
-          </a>
-        </div>
-
-        {/* Social Icons */}
-        <div className="flex gap-6 text-xl">
-          <a href="#" className="hover:text-white transition">
-            <FaFacebookF />
-          </a>
-          <a href="#" className="hover:text-white transition">
-            <FaInstagram />
-          </a>
-          <a href="#" className="hover:text-white transition">
-            <FaLinkedin />
+            Contact Us
           </a>
         </div>
 
