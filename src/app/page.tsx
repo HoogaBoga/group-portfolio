@@ -8,7 +8,6 @@ import ScrollReveal from "@/components/ScrollReveal"
 import Footer from "@/components/Footer"
 import Partners from "@/components/Partners"
 
-
 export default function Home() {
   return (
     <div className="bg-brand-white overflow-x-hidden">
@@ -24,8 +23,10 @@ export default function Home() {
         >
           <Project />
         </section>
-        
-        <Partners title="Our Partners"/>
+
+        <section className="w-full flex justify-center items-center p-6 max-h-full">
+          <Partners title="Our Partners" />
+        </section>
 
         <section id="about">
           <ScrollReveal offset={200}>
@@ -33,7 +34,7 @@ export default function Home() {
           </ScrollReveal>
         </section>
 
-        <Staff />
+        {/* <Staff /> */}
         <section
           id="contact"
           className="w-full flex justify-center items-center"
