@@ -1,11 +1,8 @@
-import Image from "next/image"
 import Hero from "@/components/Hero"
 import About from "@/components/About"
-import Staff from "@/components/Staff"
 import Contact from "@/components/Contact"
 import Project from "@/components/Projects"
 import ScrollReveal from "@/components/ScrollReveal"
-import Footer from "@/components/Footer"
 import Partners from "@/components/Partners"
 
 export default function Home() {

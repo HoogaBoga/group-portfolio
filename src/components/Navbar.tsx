@@ -1,6 +1,5 @@
 import React from "react"
 import Image from "next/image"
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa"
 
 function Navbar() {
   return (
