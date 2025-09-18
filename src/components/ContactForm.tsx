@@ -43,14 +43,23 @@ export default function ContactForm(): JSX.Element {
       })
 
       const text = await response.text().catch(() => "")
-      let parsed: any = null
+      let parsed: unknown = null
       try {
         parsed = text ? JSON.parse(text) : null
       } catch {}
 
-      if (!response.ok || (parsed && parsed.ok === false)) {
+      if (
+        !response.ok ||
+        (parsed &&
+          typeof parsed === "object" &&
+          parsed !== null &&
+          "ok" in parsed &&
+          parsed.ok === false)
+      ) {
         const message =
-          parsed?.error || text || `Request failed with ${response.status}`
+          (parsed as { error?: string })?.error ||
+          text ||
+          `Request failed with ${response.status}`
         throw new Error(message)
       }
 
