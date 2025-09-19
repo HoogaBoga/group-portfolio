@@ -8,31 +8,44 @@ import Partners from "@/components/Partners"
 export default function Home() {
   return (
     <div className="bg-brand-white overflow-x-hidden">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start overflow-x-hidden">
-        <section id="hero">
+      <main className="flex flex-col overflow-x-hidden">
+        {/* Hero Section - First section accounts for navbar */}
+        <section id="home" className="min-h-screen pt-20">
           <ScrollReveal>
             <Hero />
           </ScrollReveal>
         </section>
+
+        {/* Projects Section */}
         <section
           id="projects"
-          className="w-full flex justify-center items-center p-6 max-h-full"
+          className="min-h-screen w-full flex justify-center items-center p-6"
         >
           <Project />
         </section>
 
-        <Partners title="Our Partners" />
+        {/* Partners Section */}
+        <section
+          id="partners"
+          className="min-h-screen w-full flex justify-center items-center"
+        >
+          <Partners title="Our Partners" />
+        </section>
 
-        <section id="about">
+        {/* About Section */}
+        <section
+          id="about"
+          className="min-h-screen w-full flex justify-center items-center"
+        >
           <ScrollReveal offset={200}>
             <About />
           </ScrollReveal>
         </section>
 
-        {/* <Staff /> */}
+        {/* Contact Section */}
         <section
           id="contact"
-          className="w-full flex justify-center items-center"
+          className="min-h-screen w-full flex justify-center items-center"
         >
           <ScrollReveal offset={200}>
             <Contact />

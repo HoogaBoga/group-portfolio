@@ -3,7 +3,13 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io"
 
-const images = ["/1.png", "/6.png", "/8.png"]
+const images = [
+  "/1.png",
+  "/padayon.png",
+  "/busolv.png",
+  "/layag.png",
+  "/axia.png",
+]
 
 function Carousel() {
   const hasMultiple = images.length > 1
@@ -71,13 +77,14 @@ function Carousel() {
     <div className="relative w-[700px] h-[390px]">
       {/* Green shadow only on bottom and right */}
       <div className="absolute inset-0 border-b-[8px] border-r-[8px] border-brand-green translate-x-2 translate-y-2 rounded-xl -z-10"></div>
-      
+
       {/* Main card with black border only on bottom and right */}
       <div className="relative w-full h-full overflow-hidden border-b-[8px] border-r-[8px] border-brand-black bg-white rounded-xl">
         {/* Slides wrapper */}
         <div
           className={
-            "flex ease-in-out" + (isAnimating ? " transition-transform duration-700" : "")
+            "flex ease-in-out" +
+            (isAnimating ? " transition-transform duration-700" : "")
           }
           style={{ transform: `translateX(-${index * 100}%)` }}
           onTransitionEnd={handleTransitionEnd}
@@ -93,7 +100,7 @@ function Carousel() {
             </div>
           ))}
         </div>
-        
+
         {/* Left Arrow */}
         <button
           onClick={prevSlide}
@@ -102,7 +109,7 @@ function Carousel() {
         >
           <IoIosArrowBack size={24} />
         </button>
-        
+
         {/* Right Arrow */}
         <button
           onClick={nextSlide}

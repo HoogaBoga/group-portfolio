@@ -45,10 +45,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
 
 const Contact: React.FC = () => {
   return (
-    <section
-      id="contact"
-      className="w-full bg-brand-white min-h-[calc(100vh+4rem)] mt-20"
-    >
+    <section id="contact" className="w-full bg-brand-white min-h-screen mt-10">
       <div className="max-w-7xl mx-auto px-6 py-16">
         <h1 className="font-inter font-bold text-[48px] md:text-[64px] underline text-brand-white text-center text-stroke-shadow">
           Get in touch

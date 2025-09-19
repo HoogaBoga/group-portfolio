@@ -241,7 +241,7 @@ function Project() {
   const featuredProject = projectInfo[0] // Zapac featured
 
   return (
-    <div ref={sectionRef} className="min-h-[100vh] py-12 px-4">
+    <div ref={sectionRef} className="min-h-screen py-12 px-4">
       <div className="max-w-7xl mx-auto w-full">
         {/* Title */}
         <div

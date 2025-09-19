@@ -17,13 +17,13 @@ export default function Footer() {
           <a href="#hero" className="hover:text-white transition">
             Home
           </a>
-          <a href="#about" className="hover:text-white transition">
+          <a href="#projects" className="hover:text-white transition">
             Projects
           </a>
-          <a href="#projects" className="hover:text-white transition">
+          <a href="#partners" className="hover:text-white transition">
             Partners
           </a>
-          <a href="#staff" className="hover:text-white transition">
+          <a href="#about" className="hover:text-white transition">
             About Us
           </a>
           <a href="#contact" className="hover:text-white transition">
