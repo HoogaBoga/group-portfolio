@@ -271,9 +271,13 @@ function Project() {
               <p className="text-gray-200 max-w-2xl mb-4">
                 {featuredProject.description}
               </p>
-              <button className="px-5 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg">
-                Learn more
-              </button>
+              <a
+                href="http://ec2-13-236-207-223.ap-southeast-2.compute.amazonaws.com/home"
+                target="_blank"
+                className="px-5 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg"
+              >
+                Check it out!
+              </a>
             </div>
           </div>
         </div>
