@@ -33,10 +33,6 @@ function About() {
           coding—we deliver software that empowers businesses to succeed in the
           digital age.
         </p>
-
-        <button className="bg-brand-white text-brand-green w-35 h-12 rounded-xl border hover:bg-brand-green hover:text-brand-white hover:border-brand-green transition-all duration-200 cursor-pointer">
-          Learn More
-        </button>
       </div>
     </section>
   )
