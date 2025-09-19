@@ -9,7 +9,6 @@ const PARTNER_LOGOS: string[] = [
   "/partners/NU.svg",
   "/partners/UC.svg",
   "/partners/UP.svg",
-  "/partners/USC.svg",
   "/partners/USJR.svg",
   "/partners/UV Gullas.svg",
 ]
